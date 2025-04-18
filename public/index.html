@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>InsultsApp</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        padding: 2rem;
+      }
+      button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      #insult {
+        margin-top: 2rem;
+        font-size: 1.25rem;
+        color: #b30000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>InsultsApp 🤬</h1>
+    <button id="getInsult">Roast Me</button>
+    <p id="insult"></p>
+
+    <script>
+      document
+        .getElementById('getInsult')
+        .addEventListener('click', async () => {
+          const res = await fetch('/api/insult');
+          const insult = await res.text();
+          document.getElementById('insult').innerText = insult;
+        });
+    </script>
+  </body>
+</html>
